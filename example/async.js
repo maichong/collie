@@ -1,10 +1,10 @@
-# collie
+/**
+ * @copyright Maichong Software Ltd. 2016 http://maichong.it
+ * @date 2016-01-19
+ * @author Liang <liang@maichong.it>
+ */
 
-async hook
-
-## Example
-
-```javascript
+'use strict';
 
 const collie = require('collie');
 
@@ -45,6 +45,3 @@ obj.add(1, 2).then(function (res) {
 }, function (err) {
   console.log('error:', err);
 });
-
-```
-

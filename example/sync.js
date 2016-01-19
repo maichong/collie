@@ -1,22 +1,22 @@
-# collie
+/**
+ * @copyright Maichong Software Ltd. 2016 http://maichong.it
+ * @date 2016-01-19
+ * @author Liang <liang@maichong.it>
+ */
 
-async hook
-
-## Example
-
-```javascript
+'use strict';
 
 const collie = require('collie');
 
 let obj = {
-  preAdd: async function (m, n) {
+  preAdd: function (m, n) {
     console.log('preAdd', m, n);
   },
-  add: async function (m, n) {
+  add: function (m, n) {
     console.log('add', m, n);
     return m + n;
   },
-  postAdd: async function (res) {
+  postAdd: function (res) {
     console.log('postAdd', res);
   }
 };
@@ -36,7 +36,7 @@ obj.pre('add', function (m, n) {
   });
 });
 
-obj.post('add', async function (res) {
+obj.post('add', function (res) {
   console.log('post add', res);
 });
 
@@ -45,6 +45,3 @@ obj.add(1, 2).then(function (res) {
 }, function (err) {
   console.log('error:', err);
 });
-
-```
-
