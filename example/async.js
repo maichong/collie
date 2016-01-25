@@ -6,7 +6,7 @@
 
 'use strict';
 
-const collie = require('collie');
+const collie = require('../index');
 
 let obj = {
   preAdd: async function (m, n) {
