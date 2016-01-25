@@ -104,16 +104,27 @@ function compose(hooks, args, scope) {
   if (!Array.isArray(hooks)) throw new TypeError('Hooks stack must be an array!');
   var promise = Promise.resolve();
 
+  var temp = {
+    args: args
+  };
+
   hooks.forEach(function (fn) {
     if (typeof fn !== 'function') throw new TypeError('Hooks must be composed of functions!');
     promise = promise.then(function () {
       return new Promise(function (resolve, reject) {
+        function callback(res) {
+          if (Array.isArray(res)) {
+            temp.args = res;
+          }
+          resolve(res);
+        }
+
         try {
-          var res = fn.apply(scope, args);
+          var res = fn.apply(scope, temp.args);
           if (res && res.then) {
-            res.then(resolve, reject);
+            res.then(callback, reject);
           } else {
-            resolve(res);
+            callback(res);
           }
         } catch (error) {
           reject(error);

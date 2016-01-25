@@ -11,6 +11,7 @@ const collie = require('../index');
 let obj = {
   preAdd: async function (m, n) {
     console.log('preAdd', m, n);
+    return [m + 1, n + 1];
   },
   add: async function (m, n) {
     console.log('add', m, n);
@@ -24,14 +25,14 @@ let obj = {
 collie(obj, 'add');
 
 obj.pre('add', function (m, n) {
-  console.log('pre save', m, n);
+  console.log('pre add', m, n);
 });
 
 obj.pre('add', function (m, n) {
-  console.log('other pre save', m, n);
+  console.log('other pre add', m, n);
   return new Promise(function (resolve, reject) {
     setTimeout(function () {
-      resolve();
+      resolve([m + 1, n + 1]);
     }, 1000);
   });
 });
