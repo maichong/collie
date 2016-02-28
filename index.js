@@ -9,14 +9,15 @@
 /**
  * @param obj
  * @param method
+ * @param original
  */
-function collie(obj, method) {
+function collie(obj, method, original) {
   //记录原始函数
-  var original = obj[method];
+  original = original || obj[method];
 
   //存放hooks函数
   obj._hooks = obj._hooks || {};
-  obj._hooks[method] = obj._hooks[method] || {pre: [], post: []};
+  obj._hooks[method] = obj._hooks[method] || { pre: [], post: [] };
 
   obj.pre = function pre(name, fn) {
     if (!obj._hooks[name]) {
