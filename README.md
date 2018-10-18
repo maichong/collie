@@ -64,7 +64,7 @@ obj.add(1, 2).then(function (res) {
 ```
 
 ## Contribute
-[Maichong Software](http://maichong.it)
+[Maichong Software](http://maichong.io)
 
 [Liang Xingchen](https://github.com/liangxingchen)
 

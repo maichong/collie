@@ -1,25 +1,24 @@
 {
   "name": "collie",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "async hook",
   "main": "index.js",
+  "types": "index.d.ts",
   "keywords": [
     "async",
     "hook",
-    "hooks"
+    "hooks",
+    "events",
+    "eventEmitter",
+    "eventDispatcher",
+    "listeners"
   ],
-  "scripts": {
-  },
+  "author": "Liang <liang@maichong.it> (https://github.com/liangxingchen)",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maichong/collie.git"
   },
-  "author": {
-    "name": "Liang",
-    "email": "liang@maichong.it",
-    "url": "https://github.com/liangxingchen"
-  },
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/maichong/collie/issues"
   },

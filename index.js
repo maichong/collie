@@ -45,7 +45,7 @@ function collie(obj, method, original) {
   obj[method] = function () {
 
     var args = arguments;
-    var results = [];
+    var results = [null].concat(Array.prototype.slice.call(args));
 
     let preHooks = [];
 
@@ -65,8 +65,7 @@ function collie(obj, method, original) {
 
     //记录下方法的返回值
     promise = promise.then(function (result) {
-      results.push(result);
-      return Promise.resolve();
+      results[0] = result;
     });
 
     let postHooks = [];
@@ -89,7 +88,7 @@ function collie(obj, method, original) {
 
     return promise.then(function () {
       //异步返回原始函数返回值
-      return Promise.resolve(results[0]);
+      return results[0];
     });
   };
 }
@@ -137,6 +136,5 @@ function compose(hooks, args, scope) {
   return promise;
 }
 
-collie.default = collie;
 collie.compose = compose;
 module.exports = collie;
